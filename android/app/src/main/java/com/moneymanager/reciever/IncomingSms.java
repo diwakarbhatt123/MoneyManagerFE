@@ -23,7 +23,8 @@ public class IncomingSms extends BroadcastReceiver {
                                             SmsMessage smsMessage = getSmsFromNotification(context, intent);
                                             serviceIntent.putExtra("hasInternet", hasInternet);
                                             serviceIntent.putExtra("message", smsMessage.getDisplayMessageBody());
-                                            serviceIntent.putExtra("phoneNumber", smsMessage.getDisplayOriginatingAddress());
+                                            serviceIntent.putExtra("sender", smsMessage.getDisplayOriginatingAddress());
+                                            serviceIntent.putExtra("timeStamp", smsMessage.getTimestampMillis())
                                             context.startService(serviceIntent);
                                             HeadlessJsTaskService.acquireWakeLockNow(context);
                 }
