@@ -1,7 +1,15 @@
+package com.moneymanager.service;
+
+import android.content.Intent;
+import android.os.Bundle;
+import com.facebook.react.*;
+import com.facebook.react.jstasks.*;
+import com.facebook.react.bridge.*;
+
 public class SmsPusher extends HeadlessJsTaskService {
 
   @Override
-  protected @Nullable HeadlessJsTaskConfig getTaskConfig(Intent intent) {
+  protected HeadlessJsTaskConfig getTaskConfig(Intent intent) {
     Bundle extras = intent.getExtras();
     if (extras != null) {
       return new HeadlessJsTaskConfig(

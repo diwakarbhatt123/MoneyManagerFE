@@ -1,8 +1,16 @@
+package com.moneymanager.reciever;
+
+import android.app.ActivityManager;
 import android.content.*;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.telephony.*;
 import android.os.*;
 import android.util.*;
-import com.moneymanager.service.*;
+import com.moneymanager.service.SmsPusher;
+import com.facebook.react.*;
+
+import java.util.List;
 
 public class IncomingSms extends BroadcastReceiver {
 
@@ -16,7 +24,7 @@ public class IncomingSms extends BroadcastReceiver {
                                             SmsMessage smsMessage = getSmsFromNotification(context, intent);
                                             serviceIntent.putExtra("hasInternet", hasInternet);
                                             serviceIntent.putExtra("message", smsMessage.getDisplayMessageBody());
-                                            serviceIntent.putExtra("phoneNumber", currentMessage.getDisplayOriginatingAddress());
+                                            serviceIntent.putExtra("phoneNumber", smsMessage.getDisplayOriginatingAddress());
                                             context.startService(serviceIntent);
                                             HeadlessJsTaskService.acquireWakeLockNow(context);
                     }
