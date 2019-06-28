@@ -6,9 +6,10 @@
  * @flow
  */
 
+
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import AddExpense from './component/addexpense/AddExpense';
+import {Platform, StyleSheet, Text, View,Button,} from 'react-native';
+import AddReminder from './component/addReminder/AddReminder';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,11 +19,22 @@ const instructions = Platform.select({
 });
 
 type Props = {};
+
+
 export default class App extends Component<Props> {
+
+
+  constructor (props) {
+    super(props);
+  }
+
   render() {
+
+    //const {navigate}=this.props.navigation;
     return (
+
       <View>
-        <AddExpense/>
+        <AddReminder/>
       </View>
     );
   }
