@@ -61,11 +61,16 @@ export default class SplitExpense extends Component {
 
         this.setState(() => {
             return {
+                amt: "Split amount : Rs. "+(this.totalAmount/(this.divisors)).toFixed(2),
                 valueArray: newArray
+                /*valueArray: newArray,
+                amt: "Split amount : Rs. "+(this.totalAmount/(this.divisors+1)).toFixed(2)*/
+
             }
         }, () => {
             LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-        });
+
+        },);
     }
 
     render() {
