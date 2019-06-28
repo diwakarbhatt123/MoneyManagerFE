@@ -14,40 +14,65 @@ import {Platform,
     Text,
     View,
     Dimensions,
-    Picker } from 'react-native';
+    Picker,Alert } from 'react-native';
 import Header from "../Common/Header";
 
 
 var FloatingLabel = require('react-native-floating-labels');
 type Props = {};
-export default class App extends Component<Props> {
+export default class AddReminder extends Component<Props> {
+
+    static navigationOptions = {
+        title: 'Reminder',
+        headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
+        headerStyle:{
+            backgroundColor:'#ff4f10',
+        },
+    };
 
     constructor(props,context){
         super(props,context);
 
         this.state = {
-            reminderId:"123456789",
+            reminderId:"fc-fgh35262",
             amount: "1200",
             merchant:"Freecharge",
             message:"",
             isValidated: false,
             interval:"daily"
         }
-    }
 
-    _displayResult(){
-        console.log('Button has been pressed');
+    }
+    updateInputValue(e){
+        this.setState({
+            amount: e.target.value,
+        });
+    }
+    reminderAlert() {
         if(this.reminderId!=='' && this.state.amount !== "" && this.state.merchant !== ""){
             this.setState({isValidated: true});
+            Alert.alert(
+
+                'Reminder',
+                'Reminder set for \nRepeat mode : '+this.state.interval+"\nAmount :"+this.state.amount+"\nMerchant :" +
+                this.state.merchant+"\nMessage : "+this.state.message,
+                [
+                    {text: 'Cancel', onPress: () => console.warn('Reminder Cancelled'), style: 'cancel'},
+                    {text: 'Confirm', onPress:() =>{this.props.navigation.navigate('Home'),console.warn("Reminder set successfully")}}
+                ]
+            );
         }else{
             this.setState({isValidated: false});
         }
+
     }
+
+
 
     render() {
         return (
             <View style={styles.container}>
-                <Header title="Reminder"/>
+
                 <Text
                     labelStyle={styles.labelTitle}
                     style={{alignContent: 'flex-start',margin:20,color:'black'}}
@@ -55,7 +80,7 @@ export default class App extends Component<Props> {
                 >Reminder Id :{this.state.reminderId}</Text>
                 <Picker
                     selectedValue={this.state.interval}
-                    style={{height: 40, width: 100,textColor:'#FF33D1'}}
+                    style={{height: 60, width: 150,textColor:'#FF33D1'}}
                     onValueChange={(itemValue) =>
                         this.setState({interval: itemValue})
                     }>
@@ -68,29 +93,25 @@ export default class App extends Component<Props> {
                     inputStyle={styles.labelInput}
                     style={{alignItems: 'center'}}
                     value={this.state.amount}
-                    onValueChange={(value)=>this.state({amount:value})}
+                    onChangeText={(value)=>this.setState({amount:value})}
                 >Amount</FloatingLabel>
                 <FloatingLabel
                     labelStyle={styles.labelTitle}
                     inputStyle={styles.labelInput}
                     style={{alignItems: 'center'}}
                     value={this.state.merchant}
-                    onValueChange={(value)=>this.state({merchant:value})}
+                    onChangeText={(value)=>this.setState({merchant:value})}
                 > Merchant</FloatingLabel>
                 <FloatingLabel
                     labelStyle={styles.labelTitle}
                     inputStyle={styles.labelInput}
                     style={{alignItems: 'center'}}
                     value={this.state.message}
-                    onValueChange={(value)=>this.state({message:value})}
+                    onChangeText={(value)=>this.setState({message:value})}
                 >Message</FloatingLabel>
 
                 <View style={styles.buttonReminder}>
-                    <Button onPress={() => {this. _displayResult()}} title="Submit"  />
-                </View>
-
-                <View style={styles.buttonReminder}>
-                    <Text style={styles.mTextColor}> {this.state.isValidated ? this.state.amount + " " +  this.state.merchant : "" } </Text>
+                    <Button onPress={() => {this. reminderAlert()}} title="Submit"  />
                 </View>
 
             </View>
