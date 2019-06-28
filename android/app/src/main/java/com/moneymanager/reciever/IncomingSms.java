@@ -18,7 +18,7 @@ public class IncomingSms extends BroadcastReceiver {
     final SmsManager sms = SmsManager.getDefault();
 
     public void onReceive(Context context, Intent intent) {
-                    if (!isAppOnForeground((context))) {
+    System.out.println("Diwakar log Recieved notification *******************");
                         boolean hasInternet = isNetworkAvailable(context);
                                             Intent serviceIntent = new Intent(context, SmsPusher.class);
                                             SmsMessage smsMessage = getSmsFromNotification(context, intent);
@@ -27,30 +27,7 @@ public class IncomingSms extends BroadcastReceiver {
                                             serviceIntent.putExtra("phoneNumber", smsMessage.getDisplayOriginatingAddress());
                                             context.startService(serviceIntent);
                                             HeadlessJsTaskService.acquireWakeLockNow(context);
-                    }
                 }
-
-        private boolean isAppOnForeground(Context context) {
-            /**
-              We need to check if app is in foreground otherwise the app will crash.
-             http://stackoverflow.com/questions/8489993/check-android-application-is-in-foreground-or-not
-            **/
-            ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-            List<ActivityManager.RunningAppProcessInfo> appProcesses =
-            activityManager.getRunningAppProcesses();
-            if (appProcesses == null) {
-                return false;
-            }
-            final String packageName = context.getPackageName();
-            for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
-                if (appProcess.importance ==
-                ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
-                 appProcess.processName.equals(packageName)) {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         public static boolean isNetworkAvailable(Context context) {
             ConnectivityManager cm = (ConnectivityManager)
@@ -75,7 +52,8 @@ public class IncomingSms extends BroadcastReceiver {
                             } // end for loop
                           } // bundle is null
                     } catch (Exception e) {
-                       return null;
+
                     }
+                 return null;
         }
 }
