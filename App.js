@@ -12,6 +12,8 @@ import {Platform, StyleSheet, Text, View,Button,} from 'react-native';
 import AddReminder from './component/addReminder/AddReminder';
 import {createStackNavigator} from 'react-navigation';
 import Home from "./component/Common/Home";
+import AddExpense from "./component/addexpense/AddExpense";
+import SplitExpense from "./component/addexpense/SplitExpense";
 
 
 
@@ -36,14 +38,17 @@ export default class App extends Component<Props> {
 
     //const {navigate}=this.props.navigation;
     return (
-        <AppNavigators/>
+       <AppNavigators/>
     );
   }
 }
   const AppNavigators = createStackNavigator({
     Home: Home,
     Reminder: AddReminder,
-  })
+    Expense:AddExpense,
+  },{
+   initialRouteName : 'Home'
+})
 
 const styles = StyleSheet.create({
   container: {

@@ -23,7 +23,7 @@ type Props = {};
 export default class AddReminder extends Component<Props> {
 
     static navigationOptions = {
-        title: 'Reminder',
+        title: 'Add Reminder',
         headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
         headerStyle:{
             backgroundColor:'#ff4f10',
@@ -49,7 +49,7 @@ export default class AddReminder extends Component<Props> {
         });
     }
     reminderAlert() {
-        if(this.reminderId!=='' && this.state.amount !== "" && this.state.merchant !== ""){
+        if(this.state.reminderId!=='' && this.state.amount !== "" && this.state.merchant !== ""){
             this.setState({isValidated: true});
             Alert.alert(
 
