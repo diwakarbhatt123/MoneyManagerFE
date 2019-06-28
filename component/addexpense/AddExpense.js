@@ -1,34 +1,61 @@
 import React, {Component} from 'react';
-import {Text, TextInput, View, Picker, DatePickerAndroid, Button} from 'react-native';
+import {Text, TextInput, View, Picker, DatePickerAndroid, Button, Alert} from 'react-native';
 import {AddExpenseService} from '../../service/AddExpenseService';
 import {Expense} from "../../co/Expense";
+import DatePicker from "react-native-datepicker";
 
 export default class AddExpense extends Component {
-    state = {
-        merchant: "",
-        date: new Date(),
-        recurring: "",
-        amount: 0,
-        paidTo: "",
-        category: ""
+    static navigationOptions = {
+        title: 'Add Expense',
+        headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
+        headerStyle:{
+            backgroundColor:'#ff4f10',
+        },
     };
 
-    selectDate() {
-        this.openDatePicker().then((date) => {
-            this.setState({date: date});
-        }).catch((err) => {
-            console.warn('Cannot open date picker ', err);
-        });
+    constructor(props) {
+        super(props);
+        this.state = {
+            merchant: "Testval1",
+            date: new Date(),
+            recurring: "",
+            amount: 0,
+            paidTo: "",
+            category: "Testval1"
+        };
     }
-
-    async openDatePicker() {
-        const {action, year, month, day} = await DatePickerAndroid.open({
-            date: new Date(), maxDate: new Date()
-        });
-        if (action !== DatePickerAndroid.dismissedAction) {
-            return new Date(year, month, day);
+    expenseAlert() {
+        if (this.state.amount !== 0) {
+            Alert.alert(
+                'Add Expense',
+                'Expense add for \ndate: ' + this.state.date + "\nAmount :" + this.state.amount + "\nMerchant :" +
+                this.state.merchant + "\ncategory : " + this.state.category,
+                [
+                    {text: 'Cancel', onPress: () => console.warn('Reminder Cancelled'), style: 'cancel'},
+                    {
+                        text: 'Confirm', onPress: () => {this.saveCurrentExpense.bind(this),
+                            this.props.navigation.navigate('Home'),
+                            console.warn("Reminder set successfully")
+                        }
+                    }
+                ]
+            );
+        }
+        else{
+            Alert.alert(
+                'Add Expense',
+                "Amount is 0",
+                [
+                    {
+                        text: 'Okay', onPress: () => {
+                            console.warn("Amount is 0")
+                        }
+                    }
+                ]
+            );
         }
     }
+
 
     saveCurrentExpense() {
         let expense = new Expense(this.state.merchant, this.state.date, this.state.amount, this.state.paidTo, this.state.category, this.state.recurring);
@@ -45,7 +72,7 @@ export default class AddExpense extends Component {
     render() {
         return (
             <View>
-                <Picker selectedValue={this.state.merchant} onValueChange={(itemValue, itemIndex) => {
+                <Picker selectedValue={this.state.merchant} onValueChange={(itemValue) => {
                     console.log("Selected value is ", itemValue);
                     this.setState({merchant: itemValue});
                 }}>
@@ -53,7 +80,7 @@ export default class AddExpense extends Component {
                     <Picker.Item label="Test2" value="Testval2"/>
                     <Picker.Item label="Test3" value="Testval3"/>
                 </Picker>
-                <Button title="Select Date" onPress={this.selectDate}/>
+                <DatePicker title="Select Date" selectedValue={this.state.date} date={this.state.date} onDateChange={(date) => {this.setState({date: date})}}/>
                 <Picker selectedValue={this.state.recurring} onValueChange={(itemValue, itemIndex) => {
                     console.log("Select recurring ", itemValue);
                     this.setState({recurring: itemValue});
@@ -74,12 +101,15 @@ export default class AddExpense extends Component {
                     this.setState({paidTo: text});
                 }}/>
                 <Text>Category</Text>
-                <TextInput onChangeText={(text) => {
-                    console.log("Category changed ", text);
-                    this.setState({category: text})
-                }}/>
-                <Button title="Save" onPress={this.saveCurrentExpense}/>
-                <Button title="Save And Add Another" onPress={this.saveCurrentExpense}/>
+                <Picker selectedValue={this.state.category} onValueChange={(itemValue) => {
+                    console.log("Selected value is ", itemValue);
+                    this.setState({category: itemValue});
+                }}>
+                    <Picker.Item label="Test1" value="Testval1"/>
+                    <Picker.Item label="Test2" value="Testval2"/>
+                    <Picker.Item label="Test3" value="Testval3"/>
+                </Picker>
+                <Button title="Save" onPress={()=>this.expenseAlert()}/>
             </View>
         )
     }
