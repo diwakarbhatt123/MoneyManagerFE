@@ -22,14 +22,6 @@ var FloatingLabel = require('react-native-floating-labels');
 type Props = {};
 export default class AddReminder extends Component<Props> {
 
-    static navigationOptions = {
-        title: 'Add Reminder',
-        headerTitleStyle :{textAlign: 'center',alignSelf:'center'},
-        headerStyle:{
-            backgroundColor:'#ff4f10',
-        },
-    };
-
     constructor(props,context){
         super(props,context);
 

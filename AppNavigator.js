@@ -1,17 +1,16 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import React, { Component } from 'react';
-import Home from './component/Home';
-import Basic from './component/CategoryTransactionList';
+import Home from './component/dashboard/Home';
+import Basic from './component/dashboard/CategoryTransactionList';
 import {Image} from 'react-native' ;
-import ParallaxDemo from'./component/ParallelCategoryList';
+import ParallaxDemo from'./component/dashboard/ParallelCategoryList';
+import AddReminder from './component/addReminder/AddReminder';
+import AddExpense from './component/addexpense/AddExpense';
 
 export const AppNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-//      headerTitle: (
-//            <Image style={{ alignSelf: 'center' , width: 30, height: 39 }} source={require('./Images/logo.png')}/>
-//        ),
       title: 'Money Manager',
       headerLeft : null,
        headerTintColor: 'white',
@@ -22,13 +21,37 @@ export const AppNavigator = createStackNavigator({
     }
   },
   CategoryListScreen: {
-    screen: Basic,
+                 screen: Basic,
     navigationOptions: ({ navigation }) => ({
           title: `${navigation.state.params.category}`,
+          headerTintColor: 'white',
+                    headerStyle: {
+                      backgroundColor: '#E3714D'
+                    },
         }),
-    }
-  },
- {
-    mode: 'modal'
+    },
+  Reminder: {
+  screen :AddReminder,
+  navigationOptions: {
+        title: 'Add Reminder',
+         headerTintColor: 'white',
+            headerStyle: {
+              backgroundColor: '#E3714D'
+            },
+
+      }
+    },
+  Expense: {
+    screen :AddExpense,
+    navigationOptions: {
+          title: 'Add Expense',
+           headerTintColor: 'white',
+              headerStyle: {
+                backgroundColor: '#E3714D'
+              },
+
+        }
+
+    },
   });
 export const AppContainer = createAppContainer(AppNavigator);

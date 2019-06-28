@@ -6,15 +6,10 @@
  * @flow
  */
 
-
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Button,} from 'react-native';
-import AddReminder from './component/addReminder/AddReminder';
-import {createStackNavigator} from 'react-navigation';
-import Home from "./component/Common/Home";
-import AddExpense from "./component/addexpense/AddExpense";
-import SplitExpense from "./component/addexpense/SplitExpense";
-
+import React , {Component} from 'react';
+import { AppContainer } from './AppNavigator';
+import CategoryTransactionList from './component/dashboard/CategoryTransactionList';
+import { Platform ,ScrollView, StatusBar, Dimensions, Text,StyleSheet } from 'react-native'
 
 
 const instructions = Platform.select({
@@ -24,31 +19,15 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+
 type Props = {};
-
-
 export default class App extends Component<Props> {
-
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-
-    //const {navigate}=this.props.navigation;
+render() {
     return (
-       <AppNavigators/>
+           <AppContainer/>
     );
   }
 }
-  const AppNavigators = createStackNavigator({
-    Home: Home,
-    Reminder: AddReminder,
-    Expense:AddExpense,
-  },{
-   initialRouteName : 'Home'
-})
 
 const styles = StyleSheet.create({
   container: {
