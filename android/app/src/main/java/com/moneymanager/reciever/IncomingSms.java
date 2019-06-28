@@ -18,7 +18,6 @@ public class IncomingSms extends BroadcastReceiver {
     final SmsManager sms = SmsManager.getDefault();
 
     public void onReceive(Context context, Intent intent) {
-    System.out.println("Diwakar log Recieved notification *******************");
                         boolean hasInternet = isNetworkAvailable(context);
                                             Intent serviceIntent = new Intent(context, SmsPusher.class);
                                             SmsMessage smsMessage = getSmsFromNotification(context, intent);
