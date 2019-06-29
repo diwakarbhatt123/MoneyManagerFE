@@ -4,6 +4,7 @@ import Home from './component/dashboard/Home';
 import Basic from './component/dashboard/CategoryTransactionList';
 import AddReminder from './component/addReminder/AddReminder';
 import AddExpense from './component/addexpense/AddExpense';
+import Travel from './component/dashboard/Travel';
 import TermsAndConditions from './component/permissions/TermsAndConditions';
 import PushSms from './component/pushsms/PushSms';
 
@@ -70,5 +71,15 @@ export const AppNavigator = createStackNavigator({
         }
 
     }
-});
+Travel: {
+                     screen: Travel,
+        navigationOptions: ({ navigation }) => ({
+              title: `${navigation.state.params.category}`,
+              headerTintColor: 'white',
+                        headerStyle: {
+                          backgroundColor: '#E3714D'
+                        },
+            }),
+        },
+  });
 export const AppContainer = createAppContainer(AppNavigator);

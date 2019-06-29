@@ -10,7 +10,7 @@ import DeviceInfo from 'react-native-device-info';
 const deviceId = DeviceInfo.getDeviceId();
 
 
-export default class Basic extends Component {
+export default class Travel extends Component {
 
 constructor(props){
  super(props);
@@ -31,7 +31,7 @@ constructor(props){
                             <Image
                              resizeMode="cover"
                              style={styles.cover}
-                             source={require('../../images/Dining.png')}
+                             source={require('../../images/Travel.png')}
                             />
 
 
