@@ -7,6 +7,7 @@ import AddExpense from './component/addexpense/AddExpense';
 import Travel from './component/dashboard/Travel';
 import TermsAndConditions from './component/permissions/TermsAndConditions';
 import PushSms from './component/pushsms/PushSms';
+import SplitExpense from './component/splitexpense/SplitExpense';
 
 export const AppNavigator = createStackNavigator({
 
@@ -80,5 +81,15 @@ export const AppNavigator = createStackNavigator({
             },
         }),
     },
+    SplitExpense: {
+        screen: SplitExpense,
+        navigationOptions: ({navigation}) => ({
+            title: 'Split Expense',
+            headerTintColor: 'white',
+            headerStyle: {
+                backgroundColor: '#E3714D'
+            },
+        }),
+    }
 });
 export const AppContainer = createAppContainer(AppNavigator);
