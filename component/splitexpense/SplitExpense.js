@@ -13,8 +13,8 @@ export default class SplitExpense extends Component {
         }
         this.addNewEle = false;
         this.index = 1;
-        this.amount="Total amount : Rs "+"1000";
-        this.totalAmount = 1000;
+        this.amount="Total amount : Rs "+"400";
+        this.totalAmount = 400;
         this.divisors = 1;
         this.individualAmount=0;
     }
