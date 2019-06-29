@@ -52,6 +52,21 @@ export default class SplitExpense extends Component {
 
     }
 
+    // remove(id) {
+    //     this.addNewEle = false;
+    //     this.divisors -= 1;
+    //     this.individualAmount = (this.amount/(this.divisors+1)).toFixed(2);
+    //     const newArray = [...this.state.valueArray];
+    //     newArray.splice(newArray.findIndex(ele => ele.id === id), 1);
+    //
+    //     this.setState(() => {
+    //         return {
+    //             valueArray: newArray
+    //         }
+    //     }, () => {
+    //         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    //     });
+    // }
     remove(id) {
         this.addNewEle = false;
         this.divisors -= 1;
@@ -61,11 +76,16 @@ export default class SplitExpense extends Component {
 
         this.setState(() => {
             return {
+                amt: "Split amount : Rs. "+(this.totalAmount/(this.divisors)).toFixed(2),
                 valueArray: newArray
+                /*valueArray: newArray,
+                amt: "Split amount : Rs. "+(this.totalAmount/(this.divisors+1)).toFixed(2)*/
+
             }
         }, () => {
             LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-        });
+
+        },);
     }
 
     render() {
