@@ -6,47 +6,17 @@
  * @flow
  */
 
-import React , {Component} from 'react';
-import { AppContainer } from './AppNavigator';
-import CategoryTransactionList from './component/dashboard/CategoryTransactionList';
-import { Platform ,ScrollView, StatusBar, Dimensions, Text,StyleSheet } from 'react-native'
-import AddExpense from './component/addexpense/AddExpense';
-import PushSms from './component/pushsms/PushSms';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+import React, {Component} from 'react';
+import {AppContainer} from './AppNavigator';
+import PushSms from "./component/pushsms/PushSms";
 
 type Props = {};
 export default class App extends Component<Props> {
 
     render() {
         return (
-            <AppContainer/>
+            <PushSms/>
         );
     }
 
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
