@@ -55,16 +55,14 @@ export default class PushSms extends Component {
 
     render() {
         return (
-            <View>
-                <ImageBackground source={require('../../images/bannerImage_01.png')} style={styles.container}>
+            <View style={styles.container}>
                     <Text style={styles.title}>FinTrack</Text>
                     <Text style={styles.tcP}>Money manager manage your expenses for you and helps you visualise
                         your spends.</Text>
                     <Text style={styles.tcPLast}>It can help you save up a lot every month.</Text>
                     <Text style={styles.progressBarText}>Analysing your sms.</Text>
-                   <Progress.Bar color='#e3714d' progress={this.state.progress}
+                    <Progress.Bar color='#e3714d' progress={this.state.progress}
                                   width={Dimensions.get('window').width - 20}/>
-                </ImageBackground>
             </View>
         )
     };
