@@ -32,11 +32,14 @@ export default class PushSms extends Component {
                 }
             });
             console.log("Pushing sms to server ", smsInfos);
-            this.setState({progress: 0.8});
             setTimeout(() => {
+                this.setState({progress: 0.6});
+                this.setState({progress: 0.7});
+                this.setState({progress: 0.8});
+                this.setState({progress: 0.9});
                 this.setState({progress: 1.0});
                 this.props.navigation.navigate('Home');
-            }, 1000);
+            }, 6000);
             // this.smsPushService.pushSms(smsInfos).then((response) => {
             //     console.log("Response is ", response);
             //     this.setState({progress: 1.0});
@@ -89,12 +92,12 @@ const styles = {
     tcP: {
         marginTop: 10,
         marginBottom: 10,
-        fontSize: 22
+        fontSize: 18
     },
     tcPLast: {
         marginTop: 10,
         marginBottom: 10,
-        fontSize: 22,
+        fontSize: 18,
         paddingBottom: 350
     },
     progressBarText: {}
