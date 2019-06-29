@@ -85,18 +85,20 @@ export default class TermsAndConditions extends Component {
                                           smsReadPermissionsGranted: 'true',
                                           tncRead: 'true'
                                       }),
-                                  }).then((response) => response.json())
-                                      .then((responseJson) => {
-                                          PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.RECEIVE_SMS, PermissionsAndroid.PERMISSIONS.READ_SMS], {
+                                  }).then((response) => {
+                                      console.log("Response for get license is ", response);
+                                      response.json()
+                                  }).then((responseJson) => {
+                                      PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.RECEIVE_SMS, PermissionsAndroid.PERMISSIONS.READ_SMS], {
 
-                                              title: 'Allow permissions to SMS?',
-                                              message:
-                                                  'We would need permission to your sms so that we can visualise your spends.',
+                                          title: 'Allow permissions to SMS?',
+                                          message:
+                                              'We would need permission to your sms so that we can visualise your spends.',
 
-                                          }).then(response => {
-                                              this.props.navigation.navigate('PushSms');
-                                          })
+                                      }).then(response => {
+                                          this.props.navigation.navigate('PushSms');
                                       })
+                                  })
                                       .catch((error) => {
                                           console.error(error);
                                       })} style={this.state.accepted ? styles.button : styles.buttonDisabled}><Text

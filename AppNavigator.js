@@ -22,12 +22,7 @@ export const AppNavigator = createStackNavigator({
     PushSms: {
         screen: PushSms,
         navigationOptions: {
-            title: 'PushSms',
-            headerLeft: null,
-            headerTintColor: 'white',
-            headerStyle: {
-                backgroundColor: '#E3714D'
-            }
+            header: null
         }
     },
     Home: {
