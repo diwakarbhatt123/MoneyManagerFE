@@ -6,6 +6,7 @@ import {Image} from 'react-native' ;
 import ParallaxDemo from'./component/dashboard/ParallelCategoryList';
 import AddReminder from './component/addReminder/AddReminder';
 import AddExpense from './component/addexpense/AddExpense';
+import Travel from './component/dashboard/Travel';
 
 export const AppNavigator = createStackNavigator({
   Home: {
@@ -53,5 +54,15 @@ export const AppNavigator = createStackNavigator({
         }
 
     },
+    Travel: {
+                     screen: Travel,
+        navigationOptions: ({ navigation }) => ({
+              title: `${navigation.state.params.category}`,
+              headerTintColor: 'white',
+                        headerStyle: {
+                          backgroundColor: '#E3714D'
+                        },
+            }),
+        },
   });
 export const AppContainer = createAppContainer(AppNavigator);

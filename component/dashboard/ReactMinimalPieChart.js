@@ -80,7 +80,7 @@ function renderLabelItem(option, props, value, category) {
     }
   }
 
-  return (<DefaultLabel {...props}>{label}{category} </DefaultLabel>);
+  return (<DefaultLabel {...props}>{category} </DefaultLabel>);
 }
 
 function renderLabels(data, props) {
@@ -117,7 +117,7 @@ function renderLabels(data, props) {
 
 function onPieClick(props, category) {
     console.log("hiiiiiiiiiii",JSON.stringify(category));
-    props.navigation.navigate('CategoryListScreen', {category});
+    props.navigation.navigate('CategoryListScreen', { category });
   };
 
 function renderSegments(data, props, hide) {
@@ -260,8 +260,8 @@ export default class ReactMinimalPieChart extends Component {
         <View>
         <Svg
           viewBox={evaluateViewBoxSize(this.props.ratio, VIEWBOX_SIZE)}
-          width="100%"
-          height="100%"
+          width="80%"
+          height="80%"
 
         >
           {renderSegments(extendedData, this.props, this.hideSegments)}
@@ -313,8 +313,8 @@ ReactMinimalPieChart.propTypes = {
 
 ReactMinimalPieChart.defaultProps = {
   cx: 50,
-  cy: 10,
-  ratio: 1,
+  cy: 30,
+  ratio: 2.5,
   startAngle: 0,
   lengthAngle: 360,
   paddingAngle: 1,
@@ -329,4 +329,5 @@ ReactMinimalPieChart.defaultProps = {
   onMouseOver: undefined,
   onMouseOut: undefined,
   onClick: undefined,
+  flex:0.5
 };

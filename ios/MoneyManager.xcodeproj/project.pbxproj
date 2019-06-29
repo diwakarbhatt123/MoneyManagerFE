@@ -45,6 +45,7 @@
 		9D5A894FD03C4BBA9B513677 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE676604922B405481B7F850 /* libRNGestureHandler-tvOS.a */; };
 		C022DD3346D141D6AAFC648C /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 782FFD37D4C0430CBDDBD90A /* libRNSVG.a */; };
 		507B8AFD7A6B4436A1232717 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 494535AC40FD444ABBC483DF /* libRNSVG-tvOS.a */; };
+		83FD725D71FD4DB3A05A73A1 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145F6629C6042129CC9F0CD /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,7 @@
 		4362510659F24530A61A3663 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		782FFD37D4C0430CBDDBD90A /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		494535AC40FD444ABBC483DF /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; name = "libRNSVG-tvOS.a"; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B145F6629C6042129CC9F0CD /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/react-native-ionicons/fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +610,7 @@
 				00E356EF1AD99517003FC87E /* MoneyManagerTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				AC137BADE8F0467FB4FF5C77 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -633,6 +636,15 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		AC137BADE8F0467FB4FF5C77 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				B145F6629C6042129CC9F0CD /* Ionicons.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1080,6 +1092,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				83FD725D71FD4DB3A05A73A1 /* Ionicons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
