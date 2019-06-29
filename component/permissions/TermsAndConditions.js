@@ -73,36 +73,18 @@ export default class TermsAndConditions extends Component {
                 </ScrollView>
 
                 <TouchableOpacity disabled={!this.state.accepted}
-                                  onPress={() => fetch('https://ext-qamobile1-aws1.freecharge.in/hoh/api/userConsent', {
-                                      method: 'POST',
-                                      headers: {
-                                          Accept: 'application/json',
-                                          'Content-Type': 'application/json',
-                                      },
-                                      body: JSON.stringify({
-                                          userId: 123456,
-                                          deviceId: 123456,
-                                          smsReadPermissionsGranted: 'true',
-                                          tncRead: 'true'
-                                      }),
-                                  }).then((response) => {
-                                      console.log("Response for get license is ", response);
-                                      response.json()
-                                  }).then((responseJson) => {
-                                      PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.RECEIVE_SMS, PermissionsAndroid.PERMISSIONS.READ_SMS], {
+                                  onPress={() => PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.RECEIVE_SMS, PermissionsAndroid.PERMISSIONS.READ_SMS], {
 
-                                          title: 'Allow permissions to SMS?',
-                                          message:
-                                              'We would need permission to your sms so that we can visualise your spends.',
+                                      title: 'Allow permissions to SMS?',
+                                      message:
+                                          'We would need permission to your sms so that we can visualise your spends.',
 
-                                      }).then(response => {
-                                          this.props.navigation.navigate('PushSms');
-                                      })
+                                  }).then(response => {
+                                      this.props.navigation.navigate('PushSms');
                                   })
-                                      .catch((error) => {
-                                          console.error(error);
-                                      })} style={this.state.accepted ? styles.button : styles.buttonDisabled}><Text
-                    style={styles.buttonLabel}>Accept</Text></TouchableOpacity>
+                                  } style={this.state.accepted ? styles.button : styles.buttonDisabled}>
+                    <Text style={styles.buttonLabel}>Accept</Text>
+                </TouchableOpacity>
             </View>
         );
     }

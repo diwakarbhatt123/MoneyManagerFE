@@ -29,7 +29,7 @@ export const AppNavigator = createStackNavigator({
     Home: {
         screen: Home,
         navigationOptions: {
-            title: 'Money Manager',
+            title: 'FitTrack',
             headerLeft: null,
             headerTintColor: 'white',
             headerStyle: {
@@ -70,16 +70,15 @@ export const AppNavigator = createStackNavigator({
 
         }
 
-    }
-Travel: {
-                     screen: Travel,
-        navigationOptions: ({ navigation }) => ({
-              title: `${navigation.state.params.category}`,
-              headerTintColor: 'white',
-                        headerStyle: {
-                          backgroundColor: '#E3714D'
-                        },
-            }),
-        },
-  });
+    }, Travel: {
+        screen: Travel,
+        navigationOptions: ({navigation}) => ({
+            title: `${navigation.state.params.category}`,
+            headerTintColor: 'white',
+            headerStyle: {
+                backgroundColor: '#E3714D'
+            },
+        }),
+    },
+});
 export const AppContainer = createAppContainer(AppNavigator);

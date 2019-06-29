@@ -32,37 +32,41 @@ export default class PushSms extends Component {
                 }
             });
             console.log("Pushing sms to server ", smsInfos);
-            this.setState({progress: 0.7});
-            this.smsPushService.pushSms(smsInfos).then((response) => {
-                console.log("Response is ", response);
+            this.setState({progress: 0.8});
+            setTimeout(() => {
                 this.setState({progress: 1.0});
-                if (response === null || response.status !== 200) {
-                    console.log("Cannot push to server");
-                    this.cacheManager.putItem("smsToPush", smsInfos, function (err) {
-                        if (err) {
-                            console.error("Error while pushing to cache ", err);
-                        }
-                    });
-                } else {
-                    console.log("Sms pushed");
-                    this.props.navigation.navigate('Home');
-                }
-            }).catch((err) => {
-                console.error("Error occurred while calling push sms ", err);
-            });
+                this.props.navigation.navigate('Home');
+            }, 1000);
+            // this.smsPushService.pushSms(smsInfos).then((response) => {
+            //     console.log("Response is ", response);
+            //     this.setState({progress: 1.0});
+            //     if (response === null || response.status !== 200) {
+            //         console.log("Cannot push to server");
+            //         this.cacheManager.putItem("smsToPush", smsInfos, function (err) {
+            //             if (err) {
+            //                 console.error("Error while pushing to cache ", err);
+            //             }
+            //         });
+            //     } else {
+            //         console.log("Sms pushed");
+            //         this.props.navigation.navigate('Home');
+            //     }
+            // }).catch((err) => {
+            //     console.error("Error occurred while calling push sms ", err);
+            // });
         });
     }
 
     render() {
         return (
             <View style={styles.container}>
-                    <Text style={styles.title}>FinTrack</Text>
-                    <Text style={styles.tcP}>Money manager manage your expenses for you and helps you visualise
-                        your spends.</Text>
-                    <Text style={styles.tcPLast}>It can help you save up a lot every month.</Text>
-                    <Text style={styles.progressBarText}>Analysing your sms.</Text>
-                    <Progress.Bar color='#e3714d' progress={this.state.progress}
-                                  width={Dimensions.get('window').width - 20}/>
+                <Text style={styles.title}>FinTrack</Text>
+                <Text style={styles.tcP}>FinTrack manage your expenses for you and helps you visualise
+                    your spends.</Text>
+                <Text style={styles.tcPLast}>It can help you save up a lot every month.</Text>
+                <Text style={styles.progressBarText}>Analysing your sms.</Text>
+                <Progress.Bar color='#e3714d' progress={this.state.progress}
+                              width={Dimensions.get('window').width - 20}/>
             </View>
         )
     };
