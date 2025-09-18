@@ -12,7 +12,7 @@
     "axios": "^0.19.0",
     "install": "^0.12.2",
     "native-base": "^2.12.1",
-    "npm": "^6.9.2",
+    "npm": "^11.6.0",
     "prop-types": "^15.5.7",
     "react": "16.8.3",
     "react-minimal-pie-chart": "^4.2.0",
