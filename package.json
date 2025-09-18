@@ -16,7 +16,7 @@
     "prop-types": "^15.5.7",
     "react": "16.8.3",
     "react-minimal-pie-chart": "^4.2.0",
-    "react-native": "0.59.9",
+    "react-native": "0.62.3",
     "react-native-cache": "^1.1.7",
     "react-native-chart-kit": "^3.0.0",
     "react-native-datepicker": "^1.7.2",
