@@ -12,7 +12,7 @@
     "axios": "^0.19.0",
     "install": "^0.12.2",
     "native-base": "^2.12.1",
-    "npm": "^6.9.2",
+    "npm": "^11.7.0",
     "prop-types": "^15.5.7",
     "react": "16.8.3",
     "react-minimal-pie-chart": "^4.2.0",
@@ -41,7 +41,7 @@
     "@babel/core": "7.4.5",
     "@babel/runtime": "7.4.5",
     "babel-jest": "24.8.0",
-    "jest": "24.8.0",
+    "jest": "30.2.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-test-renderer": "16.8.3"
   },
